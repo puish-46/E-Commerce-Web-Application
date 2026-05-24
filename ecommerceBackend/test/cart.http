@@ -1,0 +1,16 @@
+### Add To Cart
+
+POST http://localhost:5000/api/cart
+Content-Type: application/json
+Authorization: Bearer USER_TOKEN
+
+{
+  "productId": "PRODUCT_ID",
+  "quantity": 2
+}
+
+
+### Get Cart
+
+GET http://localhost:5000/api/cart
+Authorization: Bearer USER_TOKEN

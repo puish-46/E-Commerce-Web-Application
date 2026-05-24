@@ -1,0 +1,3 @@
+POST http://localhost:5000/api/upload
+Authorization: Bearer YOUR_ADMIN_TOKEN
+Content-Type: multipart/form-data

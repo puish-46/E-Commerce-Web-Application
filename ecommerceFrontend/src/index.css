@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+
+  --animate-shimmer: shimmer 2.5s infinite linear;
+  --animate-fade-in-up: fadeInUp 0.4s ease-out forwards;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-700 bg-gray-50/60 antialiased selection:bg-teal-500 selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-extrabold tracking-tight text-gray-900;
+  }
+}
+
+/* Glassmorphism details */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.glass-card {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}

@@ -1,0 +1,34 @@
+### Create Category
+
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+{
+  "name": "Mobiles",
+  "description": "Smartphones and accessories",
+  "image": "mobile.jpg"
+}
+
+### Get Categories
+
+GET http://localhost:5000/api/categories
+
+### Update Category
+
+PUT http://localhost:5000/api/categories/CATEGORY_ID
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+{
+  "name": "Smartphones"
+}
+
+
+### Delete Category
+
+DELETE http://localhost:5000/api/categories/CATEGORY_ID
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+
+

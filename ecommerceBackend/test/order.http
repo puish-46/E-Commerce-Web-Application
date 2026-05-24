@@ -1,0 +1,42 @@
+### Place Order
+
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+Authorization: Bearer USER_TOKEN
+
+{
+  "shippingAddress": {
+    "fullName": "Puish",
+    "address": "Hyderabad",
+    "city": "Hyderabad",
+    "postalCode": "500001",
+    "country": "India",
+    "phone": "9876543210"
+  },
+  "paymentMethod": "COD"
+}
+
+
+### My Orders
+
+GET http://localhost:5000/api/orders/my-orders
+Authorization: Bearer USER_TOKEN
+
+### All Orders
+
+GET http://localhost:5000/api/orders/admin
+Authorization: Bearer ADMIN_TOKEN
+
+
+### Update Status
+
+PUT http://localhost:5000/api/orders/ORDER_ID/status
+Content-Type: application/json
+Authorization: Bearer ADMIN_TOKEN
+
+{
+  "orderStatus": "Delivered"
+}
+
+
+

@@ -1,0 +1,61 @@
+### Create Product
+
+POST http://localhost:5000/api/products
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+{
+  "title": "iPhone 15",
+  "description": "Latest Apple smartphone",
+  "price": 1200,
+  "image": "iphone.jpg",
+  "images": ["1.jpg", "2.jpg"],
+  "brand": "Apple",
+  "category": "CATEGORY_ID",
+  "stock": 10
+}
+
+
+### Get Products
+
+GET http://localhost:5000/api/products
+
+
+### Get Single Product
+
+GET http://localhost:5000/api/products/PRODUCT_ID
+
+
+
+### Search Products
+
+GET http://localhost:5000/api/products?keyword=iphone
+
+### Category Filter
+
+GET http://localhost:5000/api/products?category=CATEGORY_ID
+
+
+### Price Filter
+
+GET http://localhost:5000/api/products?minPrice=500&maxPrice=1500
+
+###
+
+GET http://localhost:5000/api/products?sort=price_asc
+
+
+###
+GET http://localhost:5000/api/products?sort=price_desc
+
+
+###
+GET http://localhost:5000/api/products?sort=rating
+
+
+###
+GET http://localhost:5000/api/products?sort=newest
+
+### Pagination
+
+GET http://localhost:5000/api/products?page=2

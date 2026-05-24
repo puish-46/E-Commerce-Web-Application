@@ -1,0 +1,21 @@
+### Add Review
+
+POST http://localhost:5000/api/reviews/PRODUCT_ID
+Content-Type: application/json
+Authorization: Bearer USER_TOKEN
+
+{
+  "rating": 5,
+  "comment": "Amazing product"
+}
+
+
+### Get Reviews
+
+GET http://localhost:5000/api/reviews/PRODUCT_ID
+
+
+### Delete Review
+
+DELETE http://localhost:5000/api/reviews/PRODUCT_ID/REVIEW_ID
+Authorization: Bearer USER_TOKEN

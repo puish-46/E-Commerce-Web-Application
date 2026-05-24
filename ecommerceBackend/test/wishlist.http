@@ -1,0 +1,11 @@
+### Add To Wishlist
+
+POST http://localhost:5000/api/wishlist
+Content-Type: application/json
+Authorization: Bearer USER_TOKEN
+
+{
+  "productId": "PRODUCT_ID"
+}
+
+
