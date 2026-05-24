@@ -27,9 +27,15 @@ connectDB();
 
 const app = express();
 
-// 1. CORS Middleware (MUST be first to handle all preflight OPTIONS requests)
+// 1. CORS Middleware (Dynamically allowed origins in production and development)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+  origin: allowedOrigins,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -37,7 +43,7 @@ app.use(cors({
 
 // 2. Security and Logging Middleware
 app.use(helmet({
-  crossOriginResourcePolicy: false, // Allows frontend to load images/assets served from backend
+  crossOriginResourcePolicy: false, // Allows frontend to load assets served from backend
 }));
 
 if (process.env.NODE_ENV === "development") {
@@ -46,7 +52,7 @@ if (process.env.NODE_ENV === "development") {
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 200, // limit each IP to 200 requests per windowMs
 });
 app.use("/api", limiter);
 
@@ -68,13 +74,21 @@ app.use("/api/categories", categoryRoutes);
 const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-  // Serve static files from the React frontend app
-  app.use(express.static(path.join(__dirname, "../ecommerceFrontend/dist")));
+  // Serve static files fallback
+  const distPath = path.join(__dirname, "../ecommerceFrontend/dist");
+  app.use(express.static(distPath));
 
-  // Anything that doesn't match the above routes, send back index.html
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "../ecommerceFrontend", "dist", "index.html"))
-  );
+  app.get("*all", (req, res, next) => {
+    // If request is directed to api routes, pass to next middleware (so we don't return HTML on broken APIs)
+    if (req.originalUrl.startsWith("/api")) {
+      return next();
+    }
+    res.sendFile(path.resolve(__dirname, "../ecommerceFrontend", "dist", "index.html"), (err) => {
+      if (err) {
+        res.status(200).send("Merchant Grid API is running in production.");
+      }
+    });
+  });
 } else {
   // Test routes
   app.get("/", (req, res) => {

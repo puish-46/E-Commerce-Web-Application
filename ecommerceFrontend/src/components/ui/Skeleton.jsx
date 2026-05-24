@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Skeleton = ({ className = '', type = 'text', width, height }) => {
-  const baseClasses = "animate-pulse bg-linear-to-r from-gray-200 via-gray-150 to-gray-200 bg-[length:200%_auto] rounded-xl";
+  const baseClasses = "animate-pulse bg-linear-to-r from-obsidian-200 via-accent-200 to-obsidian-200 bg-[length:200%_auto] rounded-xl";
   
   const typeClasses = {
     text: "h-4 w-3/4",

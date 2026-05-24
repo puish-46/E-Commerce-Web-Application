@@ -2,16 +2,36 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #f0fdfa;
-  --color-primary-100: #ccfbf1;
-  --color-primary-200: #99f6e4;
-  --color-primary-300: #5eead4;
-  --color-primary-400: #2dd4bf;
-  --color-primary-500: #14b8a6;
-  --color-primary-600: #0d9488;
-  --color-primary-700: #0f766e;
-  --color-primary-800: #115e59;
-  --color-primary-900: #134e4a;
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #6366f1; /* Stripe Royal Indigo */
+  --color-primary-700: #4f46e5;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  --color-accent-50: #fbfbf9;
+  --color-accent-200: #f3ece0;
+  --color-accent-400: #e7d5be;
+  --color-accent-500: #dfc299; /* Aurelian Gold */
+  --color-accent-600: #c5a880;
+  --color-accent-700: #a78b6b;
+  --color-accent-800: #8a7056;
+
+  --color-obsidian-50: #fafafa;
+  --color-obsidian-100: #f4f4f5;
+  --color-obsidian-200: #e4e4e7;
+  --color-obsidian-300: #d4d4d8;
+  --color-obsidian-400: #a1a1aa;
+  --color-obsidian-500: #71717a;
+  --color-obsidian-600: #52525b;
+  --color-obsidian-750: #27272a;
+  --color-obsidian-800: #18181b; /* Sleek Charcoal */
+  --color-obsidian-900: #121214; 
+  --color-obsidian-950: #09090b; /* Midnight Obsidian */
 
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Plus Jakarta Sans', sans-serif;
@@ -42,21 +62,29 @@
 
 @layer base {
   body {
-    @apply font-sans text-gray-700 bg-gray-50/60 antialiased selection:bg-teal-500 selection:text-white;
+    @apply font-sans text-obsidian-750 bg-obsidian-50/50 antialiased selection:bg-accent-500 selection:text-obsidian-950;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-extrabold tracking-tight text-gray-900;
+    @apply font-heading font-extrabold tracking-tight text-obsidian-950;
   }
 }
 
 /* Glassmorphism details */
 .glass-effect {
-  backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  background-color: rgba(9, 9, 11, 0.85); /* Frost Obsidian Backdrop */
 }
 
 .glass-card {
-  backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  background-color: rgba(24, 24, 27, 0.75);
+  border: 1px solid rgba(223, 194, 153, 0.15); /* Soft Gold Border Offset */
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px -5px rgba(223, 194, 153, 0.3);
+}
+
+.cyber-indigo-glow {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.45);
 }
